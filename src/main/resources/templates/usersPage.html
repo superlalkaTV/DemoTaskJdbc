@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Users</title>
+  <style>
+    th, td {
+      padding: 5px;
+    }
+
+    div.container {
+      margin: 0;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+
+    h2.center {
+      margin: 0;
+      position: absolute;
+      top: -35%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%)
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h2 class="center">Users</h2>
+
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    <tr th:each="user : ${users}">
+      <td>
+        <a th:href="@{/users(id=${user.id})}" th:text="${user.id}"/>
+      </td>
+      <td th:utext="${user.firstName}">..</td>
+      <td th:utext="${user.lastName}">..</td>
+
+    </tr>
+
+  </table>
+  <a  href="/users/new">Create new user</a>
+</div>
+</body>
+</html>
